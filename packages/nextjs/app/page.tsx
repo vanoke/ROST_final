@@ -41,7 +41,7 @@ const TODO_ABI = [
 export default function Home() {
   const { address, isConnected } = useAccount();
   const [taskInput, setTaskInput] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<any[]>([]);
   const [isAdding, setIsAdding] = useState(false);
 
   const { data: myTasks, refetch } = useContractRead({
@@ -56,7 +56,7 @@ export default function Home() {
 
   useEffect(() => {
     if (myTasks) {
-      setTasks(myTasks);
+      setTasks(myTasks as any[]);
     }
   }, [myTasks]);
 
